@@ -1,6 +1,10 @@
 import { z } from 'zod'
-import { returnSchedulesByRealEstateSchema } from '../schemas/schedules.schema'
+import { createScheduleRequestSchema, createScheduleRequestWidthUserId, createScheduleResultSchema, returnSchedulesByRealEstateSchema } from '../schemas/schedules.schema'
 
 type iReturnSchedules = z.infer<typeof returnSchedulesByRealEstateSchema>
+type iRequestCreateSchedule = z.infer<typeof createScheduleRequestSchema>
+type iRequestCreateScheduleWidthUserId = z.infer<typeof createScheduleRequestWidthUserId>
+type iResultCreateSchedule = z.infer<typeof createScheduleResultSchema>
 
-export { iReturnSchedules }
+
+export { iReturnSchedules, iRequestCreateSchedule, iRequestCreateScheduleWidthUserId, iResultCreateSchedule }

@@ -39,11 +39,9 @@ const createRealStateService = async (realEstateData: iRealEstate): Promise<iRea
         throw new AppError('Address already exists', 409)
     }
 
-    console.log(realEstate)
     const newAddress = addressRepository.create(addressData)
     await addressRepository.save(addressData)
-    console.log(addressData)
-    
+
     const newRealEstate = realEstateRepository.create(realEstate)
     await realEstateRepository.save(realEstate)
 

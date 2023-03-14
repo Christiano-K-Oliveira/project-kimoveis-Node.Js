@@ -13,7 +13,7 @@ const addressSchema = z.object({
 })
 
 const realEstateSchema = z.object({
-    value: z.number(),
+    value: z.number().or(z.string()),
     size: z.number().int(),
     categoryId: z.number().optional(),
     sold: z.boolean().default(false)
@@ -21,7 +21,7 @@ const realEstateSchema = z.object({
 
 const realEstateRequestSchema = z.object({
     sold: z.boolean().default(false),
-    value: z.number(),
+    value: z.number().or(z.string()),
     size: z.number().int(),
     categoryId: z.number(),
     address: idKey.merge(addressSchema)
