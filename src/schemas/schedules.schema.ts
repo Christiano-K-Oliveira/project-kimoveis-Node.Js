@@ -9,11 +9,12 @@ const scheduleSchema = z.object({
 
 const manySchedulesSchema = scheduleSchema.array()
 
-const returnSchedulesByRealEstateSchema = realEstateResultSchema.omit({
-    address: true,
-    categoryId: true
-}).extend({
+const returnSchedulesByRealEstateSchema = realEstateResultSchema.extend({
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    schedule: manySchedulesSchema,
     address: z.object({
+        id: z.number(),
         city: z.string(),
         street: z.string(),
         state: z.string(),
@@ -23,10 +24,7 @@ const returnSchedulesByRealEstateSchema = realEstateResultSchema.omit({
     category: z.object({
         id: z.number(),
         name: z.string()
-    }) ,
-    schedule: manySchedulesSchema,
-    createdAt: z.string(),
-    updatedAt: z.string()
+    })
 })
 
 export { returnSchedulesByRealEstateSchema }

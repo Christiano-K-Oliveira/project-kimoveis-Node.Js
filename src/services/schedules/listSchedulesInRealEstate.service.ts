@@ -3,7 +3,6 @@ import { AppDataSource } from '../../data-source'
 import { RealEstate, Schedule } from '../../entities/index'
 import { AppError } from '../../errors'
 import { iReturnSchedules } from '../../interfaces/schedules.interfaces'
-import { returnSchedulesByRealEstateSchema } from '../../schemas/schedules.schema'
 
 const listSchedulesInRealEstateService = async (idRealEstate: number): Promise<RealEstate> => {
     const realEstateRepository: Repository<RealEstate> = AppDataSource.getRepository(RealEstate)
@@ -23,8 +22,6 @@ const listSchedulesInRealEstateService = async (idRealEstate: number): Promise<R
     if(!realEstate){
         throw new AppError('RealEstate not found', 404)
     }
-
-    // const returnSchedules: iReturnSchedules = returnSchedulesByRealEstateSchema.parse(realEstate)
 
     return realEstate
 }

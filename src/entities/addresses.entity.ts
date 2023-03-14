@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
+import { RealEstate } from './realEstate.entity'
 
 @Entity('addresses')
 class Address {
@@ -22,3 +23,4 @@ class Address {
 }
 
 export { Address }
+

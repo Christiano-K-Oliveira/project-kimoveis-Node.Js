@@ -5,6 +5,7 @@ import checkIsAdmin from '../middlewares/checkIsAdmin.middleware'
 
 const schedulesRoutes: Router = Router()
 
+schedulesRoutes.post('',)
 schedulesRoutes.get('/realEstate/:id', checkTokenMiddleware, checkIsAdmin, listSchedulesInRealEstateController)
 
 export default schedulesRoutes

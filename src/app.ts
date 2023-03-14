@@ -20,23 +20,3 @@ app.use('/categories', categoriesRoutes)
 app.use(errorHandler)
 
 export default app
-
-//Para Omitir uma chave...
-
-// const findUsers: Array<User> = await userRepository.find({
-//     relations: {
-//         address: true
-//     }
-// })
-
-//Para Omitir uma chave e trazer os usuários desativados...
-
-// const findUsers: Array<User> = await userRepository.find({
-//     relations: {
-//         address: true - Omitindo chave de address
-//     },
-//     widthDeleted: true - opção usada para mostrar usuários deletetados com softRemove
-// })
-
-//Comentários para caso precise usar futuramente no: createRealState.service, realEstate.schema
-//Falta passar o type das entidades para DATETIME, o postgresSql não aceitou o tipo DATETIME

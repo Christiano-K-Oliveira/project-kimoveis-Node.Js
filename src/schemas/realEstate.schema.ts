@@ -1,4 +1,4 @@
-import { nullable, z } from 'zod'
+import { z } from 'zod'
 
 const idKey = z.object({
     id: z.number()
@@ -20,14 +20,23 @@ const realEstateSchema = z.object({
 })
 
 const realEstateRequestSchema = z.object({
+    sold: z.boolean().default(false),
     value: z.number(),
     size: z.number().int(),
-    sold: z.boolean().default(false),
-    address: addressSchema,
-    categoryId: z.number()
+    categoryId: z.number(),
+    address: idKey.merge(addressSchema)
 })
 
-const realEstateResultSchema = idKey.merge(realEstateRequestSchema)
+const realEstateResultSchema = idKey.merge(realEstateRequestSchema).extend({
+    createdAt: z.string(),
+    updatedAt: z.string()
+})
+
+const returnListRealEstatesSchema = realEstateResultSchema.extend({
+    sold: z.boolean()
+}).omit({
+    categoryId: true
+}).array()
 
 
-export { realEstateSchema, addressSchema, realEstateResultSchema, realEstateRequestSchema }
+export { realEstateSchema, addressSchema, realEstateResultSchema, realEstateRequestSchema, returnListRealEstatesSchema }
